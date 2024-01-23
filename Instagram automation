@@ -1,0 +1,21 @@
+from instagrapi import Client
+from instagrapi.exceptions import TwoFactorRequired
+
+config = configparser.ConfigParser()
+config.read("instabot.ini")
+
+inta = config["insta"]
+username = inta["username"]
+password = inta["password"]
+
+client = Client()
+client.login(username, password)
+
+# example of following a user
+client.follow(username="example_user")
+
+# example of liking a post
+client.like(username, "post_id")
+
+# example of commenting on a post
+client.comment(username, "post_id", "Great post!")
